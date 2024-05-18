@@ -1,12 +1,12 @@
 import { CommonModule, NgFor } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-categorylist',
   standalone: true,
-  imports: [NgFor, CommonModule],
+  imports: [NgFor, CommonModule, RouterLink],
   templateUrl: './categorylist.component.html',
   styleUrl: './categorylist.component.css'
 })
@@ -41,6 +41,6 @@ export class CategorylistComponent implements OnInit {
   }
   
   addToCart() {
-    alert("hello")
+    console.log("hello world")
     }
 }

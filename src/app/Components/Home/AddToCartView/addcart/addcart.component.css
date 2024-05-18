@@ -1,0 +1,3 @@
+.rounded-button {
+    border-radius: 9999px; /* equivalent to Tailwind's rounded-full */
+  }

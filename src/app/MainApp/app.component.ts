@@ -79,6 +79,10 @@ export class AppComponent implements OnInit{
     });
   }
 
+  getTotalCartCount() {
+    //here i get the total count for the cart 
+  }
+
   logOut() {
     this._authService.deleteCookie();
 
