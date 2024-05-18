@@ -1,0 +1,29 @@
+<h2 class="text-2xl font-bold tracking-tight text-gray-900">{{this.category}}</h2>
+
+<div *ngFor="let product of this.allItems" class="mx-auto max-w-2xl px-4 py-2 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+
+  <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+    <div class="group relative">
+      <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+        <img src="data:image/jpeg;base64,{{product.Item_Image}}" alt="Front of men&#039;s Basic Tee in black." class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+      </div>
+      <div class="mt-4 flex justify-between">
+        <div>
+          <h3 class="text-sm text-gray-700">
+              <span aria-hidden="true" class="absolute inset-0"></span>
+              {{product.Item_Name}}
+          </h3>
+          <!-- <p class="mt-1 text-sm text-gray-500">Black</p> -->
+        </div>
+        <p class="text-sm font-medium text-gray-900">{{product.Price | currency:"USD"}}</p>
+      </div>
+      <!-- Add to Cart button -->
+     <button (click)="addToCart()" class="mt-2 w-full px-4 py-4 bg-indigo-600 text-white text-xs font-semibold rounded hover:bg-indigo-600">
+  Add to Cart
+</button>
+
+    </div>
+
+    <!-- More products... -->
+  </div>
+</div>

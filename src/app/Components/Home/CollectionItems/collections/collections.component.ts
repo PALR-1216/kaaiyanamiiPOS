@@ -1,11 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-collections',
   standalone: true,
-  imports: [CommonModule, ],
+  imports: [CommonModule, RouterLink],
   templateUrl: './collections.component.html',
   styleUrl: './collections.component.css'
 })
