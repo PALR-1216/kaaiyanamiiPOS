@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../../../Services/AuthService/auth.service';
 
 @Component({
   selector: 'app-addcart',
@@ -14,6 +15,7 @@ export class AddcartComponent implements OnInit{
 
   private _firestore = inject(Firestore);
   private _route = inject(ActivatedRoute);
+  private _auth = inject(AuthService);
   itemID = Number(this._route.snapshot.params['ID']);
   selectedSize: string = '';
   itemObj:any = {}
@@ -42,6 +44,15 @@ export class AddcartComponent implements OnInit{
 
   
   AddToCart() {
+    let cartObj = {
+      cartID:crypto.randomUUID(),
+      employeeID: this._auth.checkCookie("userID"),
+      itemID:this.itemID,
+      productName:this.itemObj.Item_Name,
+      productPrice:this.itemObj.Price,
+    }
+
+    console.log(cartObj);
 
   }
 }
