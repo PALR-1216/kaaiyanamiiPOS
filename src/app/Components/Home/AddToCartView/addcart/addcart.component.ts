@@ -39,4 +39,9 @@ export class AddcartComponent implements OnInit{
   selectSize(size: string) {
     this.selectedSize = size;
   }
+
+  
+  AddToCart() {
+
+  }
 }
