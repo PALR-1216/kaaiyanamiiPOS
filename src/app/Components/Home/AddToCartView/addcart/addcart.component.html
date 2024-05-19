@@ -24,18 +24,19 @@
                     <div class="w-full pb-8 border-b border-gray-100 flex-wrap">
   <div class="grid grid-cols-3 min-[400px]:grid-cols-5 gap-3 max-w-md">
     <button *ngFor="let size of ['S', 'M', 'L', 'XL', 'XXL']"
-            (click)="selectSize(size)"
-            [ngClass]="{'bg-black text-white border-gray-300 shadow-sm': selectedSize === size}"
-            class="bg-white text-center py-1.5 px-6 w-full font-semibold text-lg leading-8 text-gray-900 border border-gray-200 flex items-center rounded-full justify-center transition-all duration-300 hover:bg-gray-300">
-      {{ size }}
-    </button>
+        (click)="selectSize(size)"
+        [ngClass]="selectedSize === size ? 'bg-black text-white border-gray-300 shadow-sm' : 'bg-white text-gray-900 border-gray-200'"
+        class="text-center py-1.5 px-6 w-full font-semibold text-lg leading-8 flex items-center rounded-full justify-center transition-all duration-300 hover:bg-gray-300">
+  {{ size }}
+</button>
+
   </div>
 </div>
 
 
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 py-8">
                         <div class="flex sm:items-center sm:justify-center w-full">
-                            <button
+                            <!-- <button
                                 class="group py-4 px-6 border border-gray-400 rounded-l-full bg-white transition-all duration-300 hover:bg-gray-50 hover:shadow-sm hover:shadow-gray-300">
                                 <svg class="stroke-gray-900 group-hover:stroke-black" width="22" height="22"
                                     viewBox="0 0 22 22" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -60,7 +61,7 @@
                                     <path d="M11 5.5V16.5M16.5 11H5.5" stroke="black" stroke-opacity="0.2"
                                         stroke-width="1.6" stroke-linecap="round" />
                                 </svg>
-                            </button>
+                            </button> -->
                         </div>
                         <button (click)="AddToCart()"
                             class="group py-4 px-5 rounded-full bg-indigo-500 text-white font-semibold text-lg w-full flex items-center justify-center gap-2 transition-all duration-500 hover:bg-indigo-900">

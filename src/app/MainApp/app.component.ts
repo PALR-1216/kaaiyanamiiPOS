@@ -37,6 +37,7 @@ export class AppComponent implements OnInit{
     this._router();
     try {
       await this.checkToken();
+      this.getTotalCartCount();
       
       this.loadUserImage();
 
@@ -80,7 +81,14 @@ export class AppComponent implements OnInit{
   }
 
   getTotalCartCount() {
-    //here i get the total count for the cart 
+    const cartData = sessionStorage.getItem('cartData');
+    if(cartData) {
+      const cartDataObject = JSON.parse(cartData);
+      const totalCount = Object.keys(cartDataObject).length;
+      return totalCount;
+    } else {
+      return 0;
+    }
   }
 
   logOut() {
