@@ -6,6 +6,7 @@ import { CartComponent } from './Components/CheckOut/cart/cart/cart.component';
 import { CategorylistComponent } from './Components/Home/CollectionItems/CollectionCategory/categorylist/categorylist.component';
 import { AddcartComponent } from './Components/Home/AddToCartView/addcart/addcart.component';
 import { AthmovilComponent } from './Components/CheckOut/CheckOutWithATHMovil/athmovil/athmovil.component';
+import { SalesComponent } from './Components/Sales/Sales/sales/sales.component';
 
 export const routes: Routes = [
     {path:'landing', component:LandingComponent},
@@ -13,7 +14,8 @@ export const routes: Routes = [
     {path:'cart', component:CartComponent, canActivate:[AuthGuard]},
     {path:'collection/:collectionName', component: CategorylistComponent, canActivate:[AuthGuard]},
     {path:'addToCart/:ID', component:AddcartComponent, canActivate:[AuthGuard]},
-    {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
+    {path:'Sales', component:SalesComponent, canActivate:[AuthGuard]},
+    // {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
 
 ];

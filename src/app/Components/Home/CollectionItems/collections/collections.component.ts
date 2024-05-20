@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, getDocs } from '@angular/fire/firestore';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-collections',
@@ -15,7 +15,11 @@ export class CollectionsComponent implements OnInit{
   private _firestore = inject(Firestore);
   public collectionList:any[] = [];
 
+
   async ngOnInit() {
+    
+
+
     try {
       this.getCollections();
 

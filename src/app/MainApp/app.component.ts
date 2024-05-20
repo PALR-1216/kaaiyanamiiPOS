@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { Auth } from '@angular/fire/auth';
 import Swal from 'sweetalert2';
 import { DomSanitizer, SafeUrl } from '@angular/platform-browser';
+import { Firestore, collection, getDocs } from '@angular/fire/firestore';
 declare global {
   interface Window {
     HSStaticMethods: IStaticMethods;
@@ -24,10 +25,12 @@ export class AppComponent implements OnInit{
   private router = inject(Router);
   isAuthenticated: boolean = false;
   private _authService = inject(AuthService);
+  private _firestore = inject(Firestore);
   isLoading = false
   public _auth = inject(Auth);
   public imageUrl:SafeUrl | undefined;
   private _sanitizer = inject(DomSanitizer);
+  public allCollections:any[] =[];
 
 
 
@@ -37,6 +40,7 @@ export class AppComponent implements OnInit{
     this._router();
     try {
       await this.checkToken();
+      await this.getAllCollections();
       this.getTotalCartCount();
       
       this.loadUserImage();
@@ -89,6 +93,16 @@ export class AppComponent implements OnInit{
     } else {
       return 0;
     }
+  }
+
+  async getAllCollections() {
+    let ref = collection(this._firestore, "Collections");
+    let snapshot = await getDocs(ref);
+    snapshot.docs.forEach((doc) => {
+      let data = doc.data();
+      let collection = data['collectionName'];
+      this.allCollections.push(collection)
+    })
   }
 
   logOut() {

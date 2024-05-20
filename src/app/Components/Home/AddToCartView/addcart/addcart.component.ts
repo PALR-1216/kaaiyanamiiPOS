@@ -57,20 +57,19 @@ export class AddcartComponent implements OnInit {
 
       // Create the cart object with cartID as a key
       let cartData = {
-        [cartID]: {
+          cartID:crypto.randomUUID(),
           employeeID: this._auth.checkCookie("userID"),
           itemID: this.itemID,
           productName: this.itemObj.Item_Name,
           productPrice: this.itemObj.Price,
           Item_Image: this.itemObj.Item_Image,
           selectedSize: this.selectedSize // Store the selected size
-        }
       };
 
       console.log(cartData);
-      let existingCartData = JSON.parse(sessionStorage.getItem('cartData')!) || {};
+      let existingCartData = JSON.parse(sessionStorage.getItem('cartData') || '[]');
       console.log(existingCartData)
-      existingCartData[cartID] = cartData[cartID];
+      existingCartData.push(cartData);
       sessionStorage.setItem('cartData', JSON.stringify(existingCartData));
     }
   }

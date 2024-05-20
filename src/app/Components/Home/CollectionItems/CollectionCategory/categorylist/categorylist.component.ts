@@ -22,14 +22,19 @@ export class CategorylistComponent implements OnInit {
 
   async ngOnInit() {
     //here get all the items from that categroy
-    await this.getCategoryItems();
+  
+    this._route.params.subscribe(params => { // make sure 'collectionName' matches the route parameter
+      console.log("new route", params["collectionName"])
+      this.getCategoryItems(params["collectionName"]);
+    });
 
   }
 
-  async getCategoryItems() {
+  async getCategoryItems(collectionName:any) {
     try {
+      this.allItems = []
       let ref = collection(this._firestore, "Items");
-      let q = query(ref, where("collectionName", "==", this.category));
+      let q = query(ref, where("collectionName", "==", collectionName));
       let snapshot = await getDocs(q);
       snapshot.forEach(doc => {
         this.allItems.push(doc.data());
