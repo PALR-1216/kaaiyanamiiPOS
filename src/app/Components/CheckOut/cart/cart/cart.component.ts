@@ -1,6 +1,7 @@
 import { CommonModule, NgFor, NgIf } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { RouterLink } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { Router, RouterLink } from '@angular/router';
+import { AuthService } from '../../../../Services/AuthService/auth.service';
 
 @Component({
   selector: 'app-cart',
@@ -13,6 +14,8 @@ export class CartComponent implements OnInit{
 
   public allItems:any[] = [];
   public totalAmount:number = 0;
+  private _authService = inject(AuthService);
+  private _router = inject(Router);
   ngOnInit() {
     this.getAllCarts();
     this.allItems = this.getAllCarts();
@@ -80,6 +83,22 @@ export class CartComponent implements OnInit{
       }
     } else {
     }
+  }
+
+  PayWithAthMovil() {
+    //pay with ath Movil
+    //save the current price and tax in the session
+    let checkoutATHMovilObj = {
+      checkoutID:crypto.randomUUID(),
+      EmployeeID: this._authService.checkCookie("userID"),
+      totalAmount:this.totalAmount,
+      totalTax:Number(this.totalAmount * Number((11.5 / 100))),
+      totalAmountWithTax:this.totalAmount * (11.5 / 100) + this.totalAmount
+    } 
+    let dataJSON = JSON.stringify(checkoutATHMovilObj);
+    let checkoutData = sessionStorage.setItem("checkoutATHMovil", dataJSON);
+    this._router.navigate(['/athMovil']);
+
   }
   
 }

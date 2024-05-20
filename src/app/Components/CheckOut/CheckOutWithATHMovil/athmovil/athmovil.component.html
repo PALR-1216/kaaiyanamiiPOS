@@ -8,23 +8,24 @@
     </div>
     <div class="text-center mb-8">
       <p class="text-lg text-gray-600 font-semibold">Amount to Pay</p>
-      <p class="text-4xl font-extrabold font-sans text-gray-900">$123.45</p>
+      <p class="text-4xl font-extrabold font-sans text-gray-900">{{this.ATHMovilPaymentData.totalAmountWithTax | currency:"USD"}}</p>
     </div>
     <div class="mb-8">
       <div class="flex justify-between text-gray-700">
         <span class="font-medium">Subtotal:</span>
-        <span>$120.00</span>
+        <span>{{this.ATHMovilPaymentData.totalAmount | currency:'USD'}}</span>
       </div>
       <div class="flex justify-between text-gray-700">
-        <span class="font-medium">Tax (3%):</span>
-        <span>$3.45</span>
+        <span class="font-medium">Tax (11.5%):</span>
+        <span>{{this.ATHMovilPaymentData.totalTax | currency:'USD'}}</span>
       </div>
       <div class="flex justify-between text-gray-900 font-bold border-t pt-2 mt-2 border-gray-300">
         <span>Total:</span>
-        <span>$123.45</span>
+        <span>{{this.ATHMovilPaymentData.totalAmountWithTax | currency:"USD"}}</span>
       </div>
     </div>
     <div class="text-center">
-      <button style="background-color:#dd6b20" class="text-white py-4 w-full rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-orange-500">Confirm Payment</button>
+      <button (click)="confirmedPayment()" style="background-color:#dd6b20" class="text-white py-4 w-full rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-orange-500">Confirm Payment</button>
+      <button (click)="CanceledPayment()" style="background-color:red" class="text-white py-4 w-full mt-4  rounded-lg shadow-lg transition-transform transform hover:scale-105 hover:bg-orange-500">Cancel Payment</button>
     </div>
   </div>

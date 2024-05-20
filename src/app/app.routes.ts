@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path:'collection/:collectionName', component: CategorylistComponent, canActivate:[AuthGuard]},
     {path:'addToCart/:ID', component:AddcartComponent, canActivate:[AuthGuard]},
     {path:'Sales', component:SalesComponent, canActivate:[AuthGuard]},
-    // {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
+    {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
 
 ];
