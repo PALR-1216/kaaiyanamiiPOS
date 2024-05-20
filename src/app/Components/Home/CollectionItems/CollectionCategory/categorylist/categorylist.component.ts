@@ -3,6 +3,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { Firestore, collection, getDocs, query, where } from '@angular/fire/firestore';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 
+
 @Component({
   selector: 'app-categorylist',
   standalone: true,
