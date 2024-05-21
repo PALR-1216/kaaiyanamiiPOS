@@ -24,7 +24,7 @@ export class ChangeComponent implements OnInit {
 
   canDeactivate(): boolean {
     if (!this.isButtonClicked) {
-      return confirm('You need to click the button before you leave. Are you sure you want to leave?');
+      return confirm('Please confirm receipt to continue');
     }
     return true;
   }
