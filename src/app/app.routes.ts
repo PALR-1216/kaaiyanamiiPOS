@@ -8,6 +8,8 @@ import { AddcartComponent } from './Components/Home/AddToCartView/addcart/addcar
 import { AthmovilComponent } from './Components/CheckOut/CheckOutWithATHMovil/athmovil/athmovil.component';
 import { SalesComponent } from './Components/Sales/Sales/sales/sales.component';
 import { CashComponent } from './Components/CheckOut/CheckOutWithCash/cash/cash.component';
+import { ChangeComponent } from './Components/CheckOut/CheckOutWithCash/ChangeView/change/change.component';
+import { DeactivateGuard } from './Guards/CanDeactivate/deactivate.guard';
 
 export const routes: Routes = [
     {path:'landing', component:LandingComponent},
@@ -17,7 +19,8 @@ export const routes: Routes = [
     {path:'addToCart/:ID', component:AddcartComponent, canActivate:[AuthGuard]},
     {path:'Sales', component:SalesComponent, canActivate:[AuthGuard]},
     {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
-    {path:'cash', component:CashComponent, canActivate:[AuthGuard]},
+    {path:'cash', component:CashComponent, canActivate:[AuthGuard], canDeactivate:[DeactivateGuard]},
+    {path:'changeView', component:ChangeComponent, canActivate:[AuthGuard], canDeactivate:[DeactivateGuard]},
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
 
 ];

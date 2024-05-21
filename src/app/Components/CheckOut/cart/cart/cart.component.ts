@@ -11,6 +11,9 @@ import { AuthService } from '../../../../Services/AuthService/auth.service';
   styleUrl: './cart.component.css'
 })
 export class CartComponent implements OnInit{
+  //TODO:How to manage split pay?
+  
+
 
   public allItems:any[] = [];
   public totalAmount:number = 0;
