@@ -88,6 +88,18 @@ export class CartComponent implements OnInit{
   PayWithAthMovil() {
     //pay with ath Movil
     //save the current price and tax in the session
+    this.makeCheckout();
+    this._router.navigate(['/athMovil']);
+
+  }
+
+  PayWithCash() {
+    this.makeCheckout();
+    this._router.navigate(['/cash'])
+  }
+
+  makeCheckout() {
+
     let checkoutATHMovilObj = {
       checkoutID:crypto.randomUUID(),
       EmployeeID: this._authService.checkCookie("userID"),
@@ -96,9 +108,7 @@ export class CartComponent implements OnInit{
       totalAmountWithTax:this.totalAmount * (11.5 / 100) + this.totalAmount
     } 
     let dataJSON = JSON.stringify(checkoutATHMovilObj);
-    let checkoutData = sessionStorage.setItem("checkoutATHMovil", dataJSON);
-    this._router.navigate(['/athMovil']);
-
+    let checkoutData = sessionStorage.setItem("checkout", dataJSON);
   }
   
 }

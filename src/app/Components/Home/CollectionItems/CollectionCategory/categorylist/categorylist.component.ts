@@ -47,6 +47,6 @@ export class CategorylistComponent implements OnInit {
   }
   
   addToCart() {
-    console.log("hello world")
+  
     }
 }

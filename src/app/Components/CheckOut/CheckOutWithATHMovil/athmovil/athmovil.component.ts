@@ -18,7 +18,7 @@ export class AthmovilComponent implements OnInit {
   }
 
   getCheckoutATHMovil() {
-    let getCheckout = sessionStorage.getItem("checkoutATHMovil");
+    let getCheckout = sessionStorage.getItem("checkout");
     let parseData = JSON.parse(getCheckout!);
     this.ATHMovilPaymentData = parseData;
     console.log(this.ATHMovilPaymentData);
@@ -56,7 +56,7 @@ export class AthmovilComponent implements OnInit {
         icon:'success',
         timer:1200
       })
-      sessionStorage.removeItem("checkoutATHMovil");
+      sessionStorage.removeItem("checkout");
       sessionStorage.removeItem("cartData");
       location.reload();
     }

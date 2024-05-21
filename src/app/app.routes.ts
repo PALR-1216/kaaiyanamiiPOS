@@ -7,6 +7,7 @@ import { CategorylistComponent } from './Components/Home/CollectionItems/Collect
 import { AddcartComponent } from './Components/Home/AddToCartView/addcart/addcart.component';
 import { AthmovilComponent } from './Components/CheckOut/CheckOutWithATHMovil/athmovil/athmovil.component';
 import { SalesComponent } from './Components/Sales/Sales/sales/sales.component';
+import { CashComponent } from './Components/CheckOut/CheckOutWithCash/cash/cash.component';
 
 export const routes: Routes = [
     {path:'landing', component:LandingComponent},
@@ -16,6 +17,7 @@ export const routes: Routes = [
     {path:'addToCart/:ID', component:AddcartComponent, canActivate:[AuthGuard]},
     {path:'Sales', component:SalesComponent, canActivate:[AuthGuard]},
     {path:'athMovil', component:AthmovilComponent, canActivate:[AuthGuard]},
+    {path:'cash', component:CashComponent, canActivate:[AuthGuard]},
     { path: '', redirectTo: '/landing', pathMatch: 'full' },
 
 ];
