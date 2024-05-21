@@ -73,6 +73,7 @@ export class CashComponent implements OnInit {
       console.log("Amount left to pay: ", this.amountLeft);
       this.amountGiven = '';
       this.CashPaymentData.totalAmountWithTax = this.amountLeft;
+      this.clientFinished = false;
     } else if (this.amountGiven > this.CashPaymentData.totalAmountWithTax) {
 
       // Handle case when the amount given is more than the total due
@@ -98,10 +99,13 @@ export class CashComponent implements OnInit {
     }
   }
 
-  canDeactivate(): boolean {
-    if (!this.clientFinished) {
-      return confirm('You havent finish the payment process do you wish to leave?');
-    }
-    return true;
-  }
+  // canDeactivate(): boolean {
+  //   if (!this.clientFinished || this.amountLeft !== 0) {
+  //     Swal.fire({
+  //       title:`Theres a amount due of ${this.amountLeft} please complete it`,
+  //       icon:'warning',
+  //     })
+  //   }
+  //   return true;
+  // }
 }
