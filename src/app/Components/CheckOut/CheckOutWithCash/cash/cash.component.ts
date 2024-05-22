@@ -99,13 +99,16 @@ export class CashComponent implements OnInit {
     }
   }
 
-  // canDeactivate(): boolean {
-  //   if (!this.clientFinished || this.amountLeft !== 0) {
-  //     Swal.fire({
-  //       title:`Theres a amount due of ${this.amountLeft} please complete it`,
-  //       icon:'warning',
-  //     })
-  //   }
-  //   return true;
-  // }
+  canDeactivate(): boolean {
+    if (!this.clientFinished) {
+      Swal.fire({
+        title:"please finish the payment",
+        icon:"warning",
+        timer:1200,
+        showConfirmButton:false
+      })
+      return false
+    }
+    return true;
+  }
 }
